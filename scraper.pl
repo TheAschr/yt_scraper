@@ -102,14 +102,16 @@ my @bots;
 my @years = ( "2016", "2015" );
 
 foreach (@table){
-	if(!$table[$index][4] && grep($_ eq substr($table[$index][5], 0, 4), @years ) ){
+	if(!$table[$index][4] && !$table[$index][3] && grep($_ eq substr($table[$index][5], 0, 4), @years ) ){
 		#print "Number of videos: $table[$index][4] \n Date created: $table[$index][5] \n\n";
-		print "\n===========================\n $table[$index][1] \n===========================\n";
+		#print "\n===========================\nSubscribers: $table[$index][3]\n $table[$index][1] \n===========================\n";
+		print "\n===========================\nLikes: $table[$index][2]\n $table[$index][1] \n===========================\n";
+
 		push(@bots,$table[$index]);
 	}
 	#print "Subscribers: $table[$index][3]\n Number of Videos: $table[$index][4]\n Date create: $table[$index][5]\n";
 	$index++;
 }
 
-print "Total bots found: ",scalar @bots,"\n";
+print "\n\nTotal possible bots found: ",scalar @bots,"\n";
 
